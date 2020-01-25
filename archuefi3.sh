@@ -4,8 +4,8 @@ mkdir ~/downloads
 cd ~/downloads
 
 echo 'Установка AUR (yay)'
-sudo pacman -Syu
-sudo pacman -S wget --noconfirm
+sudo pacman -Syyu
+sudo pacman -S git wget --noconfirm --needed
 wget git.io/yay-install.sh && sh yay-install.sh --noconfirm
 
 echo 'Создаем нужные директории'
