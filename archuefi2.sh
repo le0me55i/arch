@@ -17,9 +17,10 @@ echo 'Указываем язык системы'
 echo 'LANG="en_US.UTF-8"' > /etc/locale.conf
 
 echo 'Вписываем KEYMAP=ru FONT=ter-v16n'
-echo 'KEYMAP=en' >> /etc/vconsole.conf
+echo 'KEYMAP=us' >> /etc/vconsole.conf
 echo 'FONT=ter-v16n' >> /etc/vconsole.conf
 
+nano /etc/mkinitcpio.conf
 echo 'Создадим загрузочный RAM диск'
 mkinitcpio -p linux-zen
 
@@ -29,6 +30,7 @@ pacman -S grub efibootmgr --noconfirm
 grub-install --target=x86_64-efi --efi-directory=/boot/efi /dev/sda1
 #grub-install /dev/sda
 
+
 echo 'Обновляем grub.cfg'
 grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -36,7 +38,7 @@ echo 'Ставим программу для Wi-fi'
 pacman -S wpa_supplicant --noconfirm 
 
 echo 'Добавляем пользователя'
-useradd -m -g users -G wheel -s /bin/zsh $username
+useradd -m -g users -G wheel -s /usr/bin/zsh $username
 
 echo 'Создаем root пароль'
 passwd
