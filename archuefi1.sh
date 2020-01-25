@@ -6,7 +6,7 @@
 # Автор скрипта Алексей Бойко https://vk.com/ordanax
 
 
-loadkeys en
+loadkeys us
 setfont cyr-sun16
 echo 'Скрипт сделан на основе чеклиста Бойко Алексея по Установке ArchLinux'
 echo 'Ссылка на чек лист есть в группе vk.com/arch4u'
