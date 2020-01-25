@@ -79,6 +79,8 @@ pacman -S networkmanager network-manager-applet ppp --noconfirm
 echo 'Подключаем автозагрузку менеджера входа и интернет'
 systemctl enable NetworkManager
 
+wget -O archuefi3.sh https://raw.githubusercontent.com/le0me55i/arch/master/archuefi3.sh
+
 echo 'Установка завершена! Перезагрузите систему.'
 echo 'Если хотите подключить AUR, установить мои конфиги XFCE, тогда после перезагрзки и входа в систему, установите wget (sudo pacman -S wget) и выполните команду:'
 echo 'wget git.io/archuefi3.sh && sh archuefi3.sh'
