@@ -7,8 +7,14 @@
 
 
 loadkeys us
-pacman -Sy terminus-font
-setfont cyr-v16b
+
+rm -rf /etc/pacman.d/mirrorlist
+wget https://github.com/le0me55i/arch/raw/master/attach/mirrorlist
+mv -f ~/mirrorlist /etc/pacman.d/mirrorlist
+
+pacman -Syy
+pacman -S terminus-font --noconfirm
+setfont ter-v16b
 echo 'Скрипт сделан на основе чеклиста Бойко Алексея по Установке ArchLinux'
 echo 'Ссылка на чек лист есть в группе vk.com/arch4u'
 
@@ -69,12 +75,6 @@ mount /dev/sda1 /mnt/boot/efi
 mount -t btrfs -o autodefrag,noatime,nossd,compress=lzo,space_cache,subvol=@var /dev/sda3 /mnt/var
 mount -t btrfs -o autodefrag,noatime,nossd,compress=lzo,space_cache,subvol=@home /dev/sda3 /mnt/home
 mount -t btrfs -o autodefrag,noatime,nossd,compress=lzo,space_cache,subvol=@snapshots /dev/sda3 /mnt/.snapshots
-
-echo '3.1 Выбор зеркал для загрузки.'
-
-rm -rf /etc/pacman.d/mirrorlist
-wget https://github.com/le0me55i/arch/raw/master/attach/mirrorlist
-mv -f ~/mirrorlist /etc/pacman.d/mirrorlist
 
 echo '3.2 Установка основных пакетов'
 pacstrap /mnt base base-devel linux-zen linux-firmware nano dhcpcd netctl zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting git ccache btrfs-progs wget terminus-font
