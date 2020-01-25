@@ -13,7 +13,7 @@ sudo pacman -S xdg-user-dirs --noconfirm
 xdg-user-dirs-update
 
 echo 'Установка программ'
-sudo pacman -S firefox firefox-i18n-ru ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
+sudo pacman -S firefox firefox-i18n-{en,pl,ru,uk} ufw f2fs-tools dosfstools ntfs-3g alsa-lib alsa-utils file-roller p7zip unrar gvfs aspell-ru pulseaudio pavucontrol --noconfirm
 
 echo 'Установить рекомендумые программы?'
 read -p "1 - Да, 0 - Нет: " prog_set
@@ -32,7 +32,7 @@ if [[ $xfce_set == 1 ]]; then
   # tar -czf xfce4.tar.gz .config/xfce4
   # Выгрузите архив в интернет и скорректируйте ссылку на XFCE файл заменив ссылку на свою.
   # wget git.io/xfce4.tar.gz
-  wget https://github.com/ordanax/arch/raw/master/attach/xfce4.tar.gz
+  wget https://github.com/le0me55i/arch/raw/master/attach/xfce4.tar.gz
   sudo rm -rf ~/.config/xfce4/panel/
   sudo rm -rf ~/.config/xfce4/*
   sudo tar -xzf xfce4.tar.gz -C ~/
@@ -41,34 +41,34 @@ if [[ $xfce_set == 1 ]]; then
   sudo pacman -S capitaine-cursors
   
   echo 'Ставим лого ArchLinux в меню'
-  wget git.io/arch_logo.png
-  sudo mv -f ~/downloads/arch_logo.png /usr/share/pixmaps/arch_logo.png
+  wget https://github.com/le0me55i/arch/raw/master/attach/archlinux_logo.png
+  sudo mv -f ~/downloads/archlinux_logo.png /usr/share/pixmaps/arch_logo.png
 
   echo 'Ставим обои на рабочий стол'
-  wget git.io/bg.jpg
+  wget https://github.com/le0me55i/arch/raw/master/attach/bg.jpg
   sudo rm -rf /usr/share/backgrounds/xfce/* #Удаляем стандартрые обои
   sudo mv -f ~/downloads/bg.jpg /usr/share/backgrounds/xfce/bg.jpg
 elif [[ $xfce_set == 0 ]]; then
   echo 'Установка конфигов XFCE пропущена.'
 fi 
 
-echo "Ставим i3 с моими настройками?"
-read -p "1 - Да, 2 - Нет" vm_setting
-if [[ $vm_setting == 1 ]]; then
-    pacman -S i3-wm i3-gaps i3status sbxkb dmenu pcmanfm ttf-font-awesome feh lxappearance thunar gvfs udiskie xorg-xbacklight ristretto tumbler compton --noconfirm
-    yay -S polybar
-    wget https://github.com/ordanax/dots/raw/master/i3wm_v_2/i3wm_config.tar.gz
-    sudo rm -rf ~/.config/i3/*
-    sudo rm -rf ~/.config/polybar/*
-    sudo tar -xzf i3wm_config.tar.gz -C ~/
-elif [[ $vm_setting == 2 ]]; then
-  echo 'Пропускаем.'
-fi
+#echo "Ставим i3 с моими настройками?"
+#read -p "1 - Да, 2 - Нет" vm_setting
+#if [[ $vm_setting == 1 ]]; then
+#    pacman -S i3-wm i3-gaps i3status sbxkb dmenu pcmanfm ttf-font-awesome feh lxappearance thunar gvfs udiskie xorg-xbacklight ristretto tumbler compton --noconfirm
+#   yay -S polybar
+#    wget https://github.com/ordanax/dots/raw/master/i3wm_v_2/i3wm_config.tar.gz
+#    sudo rm -rf ~/.config/i3/*
+#    sudo rm -rf ~/.config/polybar/*
+#    sudo tar -xzf i3wm_config.tar.gz -C ~/
+#elif [[ $vm_setting == 2 ]]; then
+#  echo 'Пропускаем.'
+#fi
 
 echo 'Убираем меню граб для выбора системы?'
 read -p "1 - Да, 0 - Нет: " grub_set
 if [[ $grub_set == 1 ]]; then
-  wget git.io/grub.tar.gz
+  wget https://github.com/le0me55i/arch/raw/master/attach/grub.tar.gz
   sudo tar -xzf grub.tar.gz -C ~/
   sudo grub-mkconfig -o /boot/grub/grub.cfg
 elif [[ $grub_set == 0 ]]; then
@@ -79,7 +79,7 @@ echo 'Установить conky?'
 read -p "1 - Да, 0 - Нет: " conky_set
 if [[ $conky_set == 1 ]]; then
   sudo pacman -S conky conky-manager --noconfirm
-  wget git.io/conky.tar.gz
+  wget https://github.com/le0me55i/arch/raw/master/attach/conky.tar.gz
   tar -xzf conky.tar.gz -C ~/
 elif [[ $conky_set == 0 ]]; then
   echo 'Установка conky пропущена.'
