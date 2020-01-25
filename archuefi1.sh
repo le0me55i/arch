@@ -7,7 +7,8 @@
 
 
 loadkeys us
-setfont cyr-sun16
+pacman -Sy terminus-font
+setfont cyr-v16b
 echo 'Скрипт сделан на основе чеклиста Бойко Алексея по Установке ArchLinux'
 echo 'Ссылка на чек лист есть в группе vk.com/arch4u'
 
@@ -43,14 +44,16 @@ echo '2.4 создание разделов'
 ) | fdisk /dev/sda
 
 echo 'Ваша разметка диска'
-fdisk -l
+fdisk -l /dev/sda
+
+sleep 5s
 
 echo '2.4.2 Форматирование дисков'
 
 mkfs.fat -F32 -n "EFI" /dev/sda1
 mkswap -L "swap" /dev/sda2
 swapon /dev/sda2
-mkfs.btrfs -L "Arch Linux" /dev/sda3
+mkfs.btrfs -L "ArchLinux" -f /dev/sda3
 
 echo '2.4.3 Монтирование дисков'
 
